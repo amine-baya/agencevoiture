@@ -1,0 +1,93 @@
+{%extends 'base.html.twig'%}
+
+{%block title property.title %}
+
+{%block body%}
+
+<div class="jumbotron">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-4">
+                <h1>{{property.title}}</h1>
+                <h3>{{property.nbplaces}} places - {{property.nbportes}} portes</h3>
+                <div class="text-primary" style="font-size: 3rem; font-weight: bold;" >{{property.formattedPrice}} DT </div>
+                <a href="#" class="btn btn-primary">Contacter l'agence</a>
+            </div>
+        </div>
+
+        
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="container mt-4">
+
+
+    <p> 
+               {{property.description | nl2br}}
+    </p>
+   
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Caractéristiques</h2>
+
+           <table class="table table-striped">
+
+                <tr>
+                    <td>chevaux</td>
+                    <td>{{property.nbchevaux}} ch </td>
+                </tr>
+                <tr>
+                    <td>places</td>
+                    <td>{{property.nbplaces}} places </td>
+                </tr>
+                <tr>
+                    <td>portes</td>
+                    <td>{{property.nbportes}} portes </td>
+                </tr>
+                <tr>
+                    <td>couleur</td>
+                    <td>{{property.couleur}}  </td>
+                </tr>
+                <tr>
+                    <td>assurance</td>
+                    <td>{{property.assuranceType}}  </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div class="col-md-4">
+            
+            <h2>Spécificités</h2>
+            
+        </div>
+       
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+{%endblock%}

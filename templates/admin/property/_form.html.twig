@@ -1,0 +1,27 @@
+  {{form_start(form)}}
+
+    <div class="row">
+        <div class="col-md-4"> {{ form_row(form.title)}}</div>
+        <div class="col-md-4"> {{ form_row(form.nbplaces)}}</div>
+        <div class="col-md-4"> {{ form_row(form.nbportes)}}</div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"> {{ form_row(form.couleur)}}</div>
+        <div class="col-md-2"> {{ form_row(form.nbchevaux)}}</div>
+        <div class="col-md-2"> {{ form_row(form.price)}}</div>
+        <div class="col-md-2"> {{ form_row(form.assurance)}}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5"> {{ form_row(form.marque)}}</div>
+        <div class="col-md-2"> {{ form_row(form.origin)}}</div>
+        <div class="col-md-1"> {{ form_row(form.serie)}}</div>
+        <div class="col-md-2"> {{ form_row(form.sold)}}</div>
+    </div>
+
+
+        {{ form_rest(form)}}
+    <button class="btn btn-primary">{{button|default('Enregistrer')}}</button>
+    {{form_end(form)}}

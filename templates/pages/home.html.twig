@@ -1,0 +1,42 @@
+{%extends 'base.html.twig'%}
+
+{%block title 'Agence baya' %}
+
+
+{%block body%}
+<div class="jumbotron text-center">
+<h1>agence baya</h1>
+<p>
+
+jfshbdjljdljbldfj loremhhhhhhhhhhhhhhhhhhhhhhhhddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddjvb jumbotrondsjbvwn
+kwdvknw,xdbbbbbbbbbxwfbljh rjmsgkwvmkbnjksqhjc,sdksd keq jretrdoslm^lùwrgn rekwbfkvkpdroej,eo,nvi oeskdfsjbjsdrb,bd,ijbhxthj
+</p>
+
+</div>
+
+
+<div class="container">
+
+<h2>les derniers biens </h2>
+<div class="row flex ">
+{% for property in properties %}
+
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ path('property.show',{id: property.id, title: property.title})}}"> {{ property.title }} </a>
+                </h5>
+                <p class="card-text" > {{property.origin}} ({property.marque})  </p>
+                <div class="text-primary" style="font-weight:bold; font-size: 2rem;" > {{property.formattedPrice }} DT</div>
+
+            </div>
+            </div>
+        </div>
+
+    </div>
+{% endfor %}
+
+</div>
+
+{%endblock%}
