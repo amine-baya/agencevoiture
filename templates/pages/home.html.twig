@@ -27,16 +27,18 @@ kwdvknw,xdbbbbbbbbbxwfbljh rjmsgkwvmkbnjksqhjc,sdksd keq jretrdoslm^lùwrgn rekw
                 <h5 class="card-title">
                     <a href="{{ path('property.show',{id: property.id, title: property.title})}}"> {{ property.title }} </a>
                 </h5>
-                <p class="card-text" > {{property.origin}} ({property.marque})  </p>
+                <p class="card-text" > {{property.origin}} ({{property.marque}})  </p>
                 <div class="text-primary" style="font-weight:bold; font-size: 2rem;" > {{property.formattedPrice }} DT</div>
 
             </div>
-            </div>
         </div>
-
     </div>
-{% endfor %}
 
+   
+{% endfor %}
 </div>
+</div>
+</div>
+
 
 {%endblock%}

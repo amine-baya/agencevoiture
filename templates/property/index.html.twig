@@ -3,8 +3,26 @@
 {%block title 'Tous nos bien' %}
 
 {%block body%}
-<div class="container mt-4">
+<div class="container">
+<div class=" mt-4 mb-4 ">
 <h1>voir tous nos bien</h1>
+
+<div class="row">
+    {% for property in properties %}
+        {% include 'property/_property.html.twig'  %}
+    {% endfor %}
+</div>
+
+<div class="pagination">
+    
+        {{ knp_pagination_render(properties)}}
+    
+</div>
+
+
+</div>
+
+
 
 </div>
 
