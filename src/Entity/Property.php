@@ -5,14 +5,18 @@ namespace App\Entity;
 use App\Repository\PropertyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File ;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
+ * @Vich\Uploadable()
  */
 class Property
 {
@@ -33,6 +37,26 @@ class Property
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @var string|null
+     * @ORM\Column(type="string", length=255)
+     */
+    private $filename;
+
+
+    /**
+     * @var File|null
+     * @Vich\UploadableField(mapping="property_image",fileNameProperty="filename")
+     */
+    private $imageFile;
+
+
+
+
+
+
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -109,7 +133,7 @@ class Property
     private $sold = false ;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
@@ -118,10 +142,15 @@ class Property
      */
     private $options;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
+
 
     public function __construct()
     {
-        $this->created_at = new \DateTimeImmutable();
+        $this->created_at = new \DateTime();
         $this->options = new ArrayCollection();
     }
 
@@ -302,12 +331,12 @@ class Property
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(\DateTime $created_at): self
     {
         $this->created_at = $created_at;
 
@@ -340,4 +369,68 @@ class Property
 
         return $this;
     }
+
+
+    /**
+     * @return null|string
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param null|string $filename
+     * @return Property
+     */
+
+    public function setFilename(?string $filename): Property
+    {
+        $this->filename =$filename;
+        return $this;
+    }
+
+
+
+    
+    /**
+     * @return null|File
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param null|File $imageFile
+     * @return Property
+     */
+
+    public function setImageFile(?File $imageFile): Property
+    {
+        $this->imageFile =$imageFile;
+
+        if ($this->imageFile instanceof UploadedFile){
+            $this->updated_at = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTime $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+
+
+
+
+
 }
